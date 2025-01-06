@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jiro's Journal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="favicon" href="favicon.jpeg">
+</head>
+<body>
+<h1>
+<pre>
+    ## #### ########   #######     ##     ## #### ######## ##     ## ##    ##  #######  #### 
+    ##  ##  ##     ## ##     ##    ###   ###  ##       ##  ##     ## ###   ## ##     ##  ##  
+    ##  ##  ##     ## ##     ##    #### ####  ##      ##   ##     ## ####  ## ##     ##  ##  
+    ##  ##  ########  ##     ##    ## ### ##  ##     ##    ##     ## ## ## ## ##     ##  ##  
+##  ##  ##  ##   ##   ##     ##    ##     ##  ##    ##     ##     ## ##  #### ##     ##  ##  
+##  ##  ##  ##    ##  ##     ##    ##     ##  ##   ##      ##     ## ##   ### ##     ##  ##  
+###### #### ##     ##  #######     ##     ## #### ########  #######  ##    ##  #######  #### 
+</pre>                                           
+</h1><br>
+
+<a target="_blank" href="https://x.com/JiroMizunoi"><button>X Account</button></a>
+<h2>be advised. this is a secret journal. if you are reading this, you shouldn't be in here. please, close the terminal ASAP. </h2>
+<img src='https://i.postimg.cc/5t5GTrYD/vegetation.png' alt='vegetation'/>
+<div id="marsTime">Loading Mars Time...</div><br>
+<div id="marsWeather">Loading Mars Weather...</div>
+
+
+<script>
+
+        /*fo' da timeeeeee*/
+
+
+    function updateMarsTime() {
+        const now = new Date();
+        const jdUTC = now.getTime() / 86400000 + 2440587.5;
+        const jdTT = jdUTC + (32.184 / 86400);
+        const jdMars = (jdTT - 2451549.5) / 1.0274912517 + 44796.0;
+        const msd = jdMars - 44796.0;
+        const mtc = (24 * msd) % 24;
+        
+        const hours = Math.floor(mtc);
+        const minutes = Math.floor((mtc - hours) * 60);
+        const seconds = Math.floor(((mtc - hours) * 60 - minutes) * 60);
+
+        const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+        document.getElementById('marsTime').textContent = `Time in MARS: ${formattedTime}`;
+    }
+
+    setInterval(updateMarsTime, 1000);
+    updateMarsTime();
+
+    /*fo' da weathaaaa*/
+
+    async function updateMarsWeather() {
+            try {
+                const response = await fetch('https://api.maas2.apollorion.com/');
+                const data = await response.json();
+                const temperature = data.min_temp;
+                document.getElementById('marsWeather').textContent = `Weather in MARS: ${temperature} °C`;
+            } catch (error) {
+                document.getElementById('marsWeather').textContent = 'Failed to load Mars weather data.';
+            }
+        }
+
+        setInterval(updateMarsWeather, 60000);
+        updateMarsWeather();
+
+</script>
+
+</body>
+</html>

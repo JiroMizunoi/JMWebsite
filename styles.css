@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+body {
+    background-color: black;
+    background-image: radial-gradient(
+      rgba(0, 0, 0, 0.815), black 120%
+    );
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+    height: 100vh;
+    margin: 0 auto;
+    text-align: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-left: 2rem;
+    color: white;
+    font-size: 1.3rem;
+    text-shadow: 0 0 14px #ffffff;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(black, 0.15),
+        rgba(black, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      pointer-events: none;
+    }
+  }
+  ::selection {
+    background: #040505;
+    text-shadow: none;
+  }
+  pre {
+    margin: 0;
+  }
+
+  h1{
+    font-size: 1rem;
+    display: inline-block;
+  }
+
+  h2{
+    text-shadow: 0 0 14px #4afc3a;
+    color: #39ff14;
+  }
+
+  .blogdir{
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .bheader p{
+    text-decoration: none;
+  }
+
+  .bheader{
+    text-shadow: 0 0 14px #4afc3a;
+    font-size: 2rem;
+    color: #39ff14;
+    margin: 0;
+    text-decoration: none;
+  }
+
+  .bheader:hover{
+    font-size: 2.2rem;
+  }
+
+  button{
+    margin-top: 1rem;
+    border: 1px solid white;
+    background-color: transparent;
+    font-family: "VT323", monospace;
+    color: #0080FF;
+    font-size: 2rem;
+  }
+
+  button:hover{
+    cursor: pointer;
+    background-color: #0080FF;
+    color: white;
+  }
+
+  img{
+    height: 30rem;
+    margin-bottom: 2rem;
+  }
+
+  #marsTime {
+    font-size: 3rem;
+}
+
+#marsWeather {
+  font-size: 3rem;
+}
